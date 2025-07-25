@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 // Load environment variables
-dotenv.config();
+dotenv.config({ path: './server/.env' });
 
 // Import routes
 const userRoutes = require('./routes/api/users');

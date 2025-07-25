@@ -9,6 +9,7 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formError, setFormError] = useState('');
+  const [isSuccessMessage, setIsSuccessMessage] = useState(false);
   const { login, isAuthenticated, loading, error } = useAuth();
   
   const navigate = useNavigate();
@@ -20,12 +21,19 @@ const Login = () => {
     
     if (params.get('timeout') === 'true') {
       setFormError('Your session has timed out due to inactivity. Please log in again.');
+      setIsSuccessMessage(false);
     } else if (params.get('session') === 'expired') {
       setFormError('Your session has expired. Please log in again.');
+      setIsSuccessMessage(false);
     } else if (params.get('verified') === 'true') {
       setFormError('Your email has been verified. You can now log in.');
+      setIsSuccessMessage(true);
     } else if (params.get('reset') === 'true') {
       setFormError('Your password has been reset. Please log in with your new password.');
+      setIsSuccessMessage(true);
+    } else if (params.get('registered') === 'true') {
+      setFormError('Registration successful! Please log in with your credentials.');
+      setIsSuccessMessage(true);
     }
   }, [location]);
   
@@ -40,6 +48,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError('');
+    setIsSuccessMessage(false);
     
     if (!email || !password) {
       setFormError('Please enter both email and password');
@@ -50,6 +59,7 @@ const Login = () => {
       await login(email, password, rememberMe);
     } catch (err) {
       setFormError(err.message);
+      setIsSuccessMessage(false);
     }
   };
   
@@ -69,7 +79,11 @@ const Login = () => {
         </div>
         
         {(formError || error) && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+          <div className={`px-4 py-3 rounded-md ${
+            isSuccessMessage 
+              ? 'bg-green-50 border border-green-200 text-green-700' 
+              : 'bg-red-50 border border-red-200 text-red-700'
+          }`}>
             <div className="flex items-start">
               <AlertCircle className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
               <span>{formError || error}</span>

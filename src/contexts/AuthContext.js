@@ -1,6 +1,17 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
 const AuthContext = createContext();
+
+// Token expiration time (24 hours in milliseconds)
+const TOKEN_EXPIRATION_TIME = 24 * 60 * 60 * 1000;
+
+// Inactivity timeout (30 minutes in milliseconds) 
+const INACTIVITY_TIMEOUT = 30 * 60 * 1000;
+
+// Refresh interval (5 minutes in milliseconds)
+const REFRESH_INTERVAL = 5 * 60 * 1000;
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -83,7 +94,7 @@ export function AuthProvider({ children }) {
     setError(null);
     
     try {
-      const response = await api.post('/api/users/login', { email, password });
+      const response = await api.post('/users/login', { email, password });
       const { token, refreshToken, user, expiresIn } = response.data;
       
       // Calculate token expiry
@@ -378,6 +389,4 @@ export function AuthProvider({ children }) {
   );
 };
 
-
-export const useAuth = () => {  const context = useContext(AuthContext);  if (!context) {    throw new Error('useAuth must be used within an AuthProvider');  }  return context;};
 export default AuthContext;

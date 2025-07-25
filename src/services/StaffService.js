@@ -2,25 +2,24 @@
  * Staff Service
  * Handles API communication for staff-related operations
  */
-import Staff from '../entities/Staff';
+import api from './api';
 
 class StaffService {
   /**
    * Base API endpoint for staff operations
    * @type {string}
    */
-  static baseUrl = '/api/staff';
+  static baseUrl = '/staff';
 
   /**
    * Get a staff member by ID
    * @param {string} id - The staff ID
-   * @returns {Promise<Staff|null>} - Returns a promise with staff or null
+   * @returns {Promise<Object|null>} - Returns a promise with staff or null
    */
   static async getById(id) {
     try {
-      // In a real implementation, this would make an API call
-      // For now, we'll use the entity's localStorage implementation
-      return await Staff.getById(id);
+      const response = await api.get(`${this.baseUrl}/${id}`);
+      return response.data;
     } catch (error) {
       console.error('Error fetching staff:', error);
       throw error;

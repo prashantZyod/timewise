@@ -1,25 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import axios from 'axios';
-
-// Create an axios instance with base URL and default headers
-const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Replace with your API URL
-  headers: {
-    'Content-Type': 'application/json',
-  }
-});
-
-// Add interceptor to include auth token
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+import api from '../services/api';
 
 const BranchContext = createContext();
 

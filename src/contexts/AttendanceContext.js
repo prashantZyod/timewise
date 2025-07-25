@@ -24,7 +24,7 @@ export const AttendanceProvider = ({ children }) => {
   useEffect(() => {
     fetchAttendanceRecords();
     fetchTodayRecords();
-  }, []);
+  }, [fetchAttendanceRecords, fetchTodayRecords]);
 
   /**
    * Fetch all attendance records
