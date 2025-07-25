@@ -1,0 +1,17 @@
+{
+  "name": "TimeWise",
+  "description": "A comprehensive attendance tracking system with device verification and geofencing capabilities",
+  "repository": "https://github.com/yourusername/timewise",
+  "keywords": ["react", "attendance", "geofencing", "time-tracking", "node"],
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment for the application",
+      "value": "production"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+/* App-specific styles can go here */
+
+/* Sidebar and Layout improvements */
+.sidebar-compact {
+  width: 200px !important;
+}
+
+/* More subtle UI elements */
+.subtle-shadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.subtle-border {
+  border-color: #f1f5f9 !important;
+}
+
+.compact-card {
+  padding: 0.75rem !important;
+}
+
+.compact-spacing {
+  margin-bottom: 0.5rem !important;
+  gap: 0.5rem !important;
+}
+
+/* Reduce whitespace in content */
+.content-compact {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-compact {
+  padding: 1rem !important;
+}
+
+/* Global responsive styles */
+@media (max-width: 640px) {
+  /* Small screens */
+  .responsive-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  
+  .responsive-card {
+    margin-bottom: 1rem;
+  }
+  
+  .responsive-hide-mobile {
+    display: none !important;
+  }
+  
+  .responsive-text-sm {
+    font-size: 0.875rem !important;
+  }
+  
+  .responsive-stack-mobile {
+    flex-direction: column !important;
+  }
+  
+  .responsive-full-width-mobile {
+    width: 100% !important;
+  }
+  
+  .responsive-center-mobile {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* Make dropdowns touch-friendly on mobile */
+  select {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Medium screens */
+  .responsive-grid-md {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Update container max-widths to be more responsive */
+.container {
+  width: 100%;
+}
+
+/* Adjust card and panel layouts */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive table adjustments */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Make sure dashboard panels utilize space better */
+.dashboard-panel {
+  height: 100%;
+}
+
+/* Media queries for responsive layouts */
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .sidebar-open .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+
+/* Custom scrollbar for better mobile experience */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Touch-friendly tap targets */
+button, 
+a, 
+[role="button"], 
+input[type="submit"], 
+input[type="reset"], 
+input[type="button"] {
+  touch-action: manipulation;
+}
+
+/* Fix for iPhone input zoom */
+@media screen and (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Better white space management */
+.content-container {
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .content-container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Subtle UI elements */
+.card {
+  border-radius: 0.5rem;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* More compact tables */
+.table-compact th,
+.table-compact td {
+  padding: 0.5rem 0.75rem !important;
+}
+
+/* Reduced padding for all card content */
+.card-content-compact {
+  padding: 0.75rem !important;
+}
+
+/* Improved spacing for form elements */
+.form-group-compact {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Subtle backgrounds */
+.bg-subtle {
+  background-color: #f8fafc !important;
+}

@@ -1,0 +1,11 @@
+// Export all staff components for easy importing
+export { default as StaffDashboard } from './StaffDashboard';
+export { default as StaffScheduleOverview } from './StaffScheduleOverview';
+export { default as StaffAttendanceHistory } from './StaffAttendanceHistory';
+export { default as QuickCheckInWidget } from './QuickCheckInWidget';
+export { default as StaffNotifications } from './StaffNotifications';
+export { default as ProfileOverview } from './ProfileOverview';
+export { default as RecentActivities } from './RecentActivities';
+export { default as Announcements } from './Announcements';
+export { default as TimeOffRequest } from './TimeOffRequest';
+export { default as ShiftSwapRequestForm } from './ShiftSwapRequestForm';
